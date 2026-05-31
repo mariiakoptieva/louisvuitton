@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariia Koptieva — Portfolio | Louis Vuitton</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#faf6f0;
+  --dark:#f5efe6;
+  --card:#ede5d8;
+  --gold:#3d2010;
+  --gold2:#5c3520;
+  --cream:#1a0f0a;
+  --tan:#7a5c3a;
+  --brown:#3d2010;
+  --white:#1a0f0a;
+  --muted:#8a7060;
+  --border:#d4c4b0;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--cream);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none}
+
+.cursor{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.2s,height 0.2s}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(61,32,16,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.15s ease-out}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(250,246,240,0.97),transparent)}
+.nav-logo{font-family:'Raleway',sans-serif;font-size:18px;letter-spacing:6px;color:var(--cream);text-decoration:none;font-weight:600;text-transform:uppercase}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--gold);color:var(--black);border:none;padding:10px 24px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:none;font-family:'DM Sans',sans-serif;font-weight:600;transition:background 0.2s}
+.nav-cta:hover{background:var(--gold2)}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:120px 48px 80px;position:relative;z-index:2}
+.hero-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-name{font-family:'Raleway',sans-serif;font-size:clamp(72px,8vw,120px);line-height:0.9;margin-bottom:24px;letter-spacing:8px;font-weight:300;text-transform:uppercase}
+.hero-name .line2{color:var(--gold);display:block}
+.hero-desc{font-size:15px;color:var(--muted);line-height:1.7;max-width:400px;margin-bottom:40px;font-weight:300}
+.hero-desc strong{color:var(--white);font-weight:500}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--black);padding:14px 32px;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:transform 0.2s,background 0.2s;display:inline-block}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-secondary{border:1px solid var(--border);color:var(--white);padding:14px 32px;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:border-color 0.2s;display:inline-block}
+.btn-secondary:hover{border-color:var(--tan)}
+.hero-right{position:relative;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:top;filter:brightness(0.95)}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--black) 0%,rgba(250,246,240,0) 50%)}
+.hero-stats{position:absolute;bottom:48px;left:48px;display:flex;gap:48px;z-index:3}
+.hero-stat-num{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--white);line-height:1}
+.hero-stat-num span{color:var(--gold)}
+.hero-stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.scroll-hint{position:absolute;bottom:40px;right:48px;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollAnim 1.5s ease-in-out infinite}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+section{padding:100px 48px}
+.section-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:48px;display:flex;align-items:center;gap:16px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-family:'Raleway',sans-serif;font-size:clamp(48px,5vw,72px);letter-spacing:6px;line-height:1;margin-bottom:16px;font-weight:300;text-transform:uppercase}
+
+.about{background:var(--dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-text p{font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:20px;font-weight:300}
+.about-text p strong{color:var(--white);font-weight:500}
+.about-text p em{color:var(--gold);font-style:italic}
+.edu-block{border-left:2px solid var(--gold);padding-left:20px}
+.edu-school{font-size:14px;font-weight:500;margin-bottom:4px}
+.edu-degree{font-size:13px;color:var(--muted)}
+.edu-grade{font-size:12px;color:var(--gold);margin-top:4px}
+.edu-modules{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.6}
+
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.exp-content .role{font-size:13px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.exp-content .period{font-size:12px;color:var(--muted);margin-bottom:24px}
+.exp-content p{font-size:14px;line-height:1.8;color:var(--muted);margin-bottom:16px;font-weight:300}
+.exp-content p strong{color:var(--white);font-weight:500}
+.bullet-list{list-style:none;margin:16px 0 24px}
+.bullet-list li{font-size:13px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);padding-left:16px;position:relative;line-height:1.6}
+.bullet-list li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:11px}
+.bullet-list li strong{color:var(--white)}
+.stat-row{display:flex;gap:24px;flex-wrap:wrap;margin:24px 0}
+.stat-box{background:var(--card);border:1px solid var(--border);padding:16px 20px;min-width:120px}
+.stat-box .num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);line-height:1}
+.stat-box .lbl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.manager-quote{background:var(--card);border-left:3px solid var(--gold);padding:20px 24px;margin-top:24px}
+.manager-quote p{font-size:13px;color:var(--white);font-style:italic;line-height:1.7;margin-bottom:8px}
+.manager-quote .attribution{font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase}
+
+/* CRM / Data section */
+.data-section{background:var(--black)}
+.data-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0}
+.data-card{background:var(--card);border:1px solid var(--border);padding:24px;border-top:3px solid var(--gold)}
+.data-card h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.data-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.data-card p strong{color:var(--white)}
+
+/* Metrics dashboard */
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:32px 0}
+.metric-box{background:var(--card);border:1px solid var(--border);padding:20px;text-align:center;position:relative;overflow:hidden}
+.metric-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.metric-val{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--cream);line-height:1}
+.metric-change{font-size:12px;color:#2d7a3a;margin:4px 0}
+.metric-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+
+.conf-section{background:var(--dark)}
+.conf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:48px}
+.conf-photo{position:relative;overflow:hidden;aspect-ratio:3/4}
+.conf-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;filter:brightness(0.75) sepia(10%)}
+.conf-photo:hover img{transform:scale(1.05);filter:brightness(0.9) sepia(0%)}
+.conf-photo-label{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(to top,rgba(250,246,240,0.9),transparent);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white)}
+.conf-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px}
+.conf-item{background:var(--card);border:1px solid var(--border);padding:20px;border-left:3px solid var(--gold)}
+.conf-item h4{font-size:13px;font-weight:500;margin-bottom:4px}
+.conf-item p{font-size:11px;color:var(--muted);line-height:1.5}
+.badges-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.badge{background:rgba(61,32,16,0.08);border:1px solid rgba(61,32,16,0.25);color:var(--gold);font-size:10px;padding:4px 12px;letter-spacing:1px;text-transform:uppercase}
+
+.brands-section{background:var(--black)}
+.brands-masonry{columns:3;gap:8px;margin-bottom:48px}
+.brands-masonry img{width:100%;display:block;margin-bottom:8px;break-inside:avoid;transition:filter 0.3s;filter:none}
+.brands-masonry img:hover{filter:sepia(0%) brightness(1.1)}
+.brand-chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.brand-chip{background:var(--card);border:1px solid var(--border);padding:8px 16px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.brand-chip.highlight{border-color:var(--gold);color:var(--gold)}
+
+.qmul-section{background:var(--dark)}
+.qmul-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.analytics-card{background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:16px}
+.analytics-card h4{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.analytics-metric .val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--white);line-height:1}
+.analytics-metric .change{font-size:11px;color:#2d7a3a;margin-top:2px}
+.analytics-metric .label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.treasurer-note{background:rgba(61,32,16,0.06);border:1px solid rgba(61,32,16,0.15);padding:16px 20px;margin-top:16px}
+.treasurer-note p{font-size:12px;color:var(--gold);line-height:1.6}
+
+.skills-section{background:var(--black)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:48px}
+.skill-category h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tag{background:var(--card);border:1px solid var(--border);padding:8px 14px;font-size:12px;color:var(--white);transition:border-color 0.2s}
+.skill-tag:hover{border-color:var(--gold)}
+.skill-tag.primary{border-color:rgba(61,32,16,0.4);color:var(--gold)}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.cert-card{background:var(--card);border:1px solid var(--border);padding:20px;transition:border-color 0.2s}
+.cert-card:hover{border-color:var(--gold)}
+.cert-issuer{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.cert-name{font-size:13px;font-weight:500;margin-bottom:4px;line-height:1.4}
+.cert-date{font-size:11px;color:var(--muted)}
+.cert-img{width:100%;margin-top:12px;border:1px solid var(--border);opacity:0.8}
+.langs-row{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap}
+.lang-item{background:var(--card);border:1px solid var(--border);padding:12px 20px;text-align:center}
+.lang-name{font-size:13px;font-weight:500;margin-bottom:4px}
+.lang-level{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.lang-item.native .lang-level{color:var(--gold)}
+
+.ibm-section{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 48px}
+.ibm-inner{max-width:800px}
+.ibm-inner h3{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;margin-bottom:8px}
+.ibm-inner p{font-size:14px;color:var(--muted);line-height:1.8}
+
+.fun-section{background:var(--dark)}
+.fun-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px}
+.fun-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:transform 0.2s,border-color 0.2s}
+.fun-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.fun-card img{width:100%;aspect-ratio:1;object-fit:cover;filter:grayscale(20%) sepia(10%);transition:filter 0.3s}
+.fun-card:hover img{filter:grayscale(0%) sepia(0%)}
+.fun-card-body{padding:16px}
+.fun-card-title{font-size:12px;font-weight:500;margin-bottom:4px}
+.fun-card-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.jobs-timeline{display:flex;gap:0;flex-wrap:wrap;margin-top:32px}
+.job-item{background:var(--card);border:1px solid var(--border);border-right:none;padding:16px 20px;flex:1;min-width:140px;position:relative;transition:background 0.2s}
+.job-item:last-child{border-right:1px solid var(--border)}
+.job-item:hover{background:var(--dark)}
+.job-emoji{font-size:20px;margin-bottom:8px;display:block}
+.job-title{font-size:12px;font-weight:500;margin-bottom:4px}
+.job-note{font-size:10px;color:var(--muted);line-height:1.4}
+
+.interests-section{background:var(--black)}
+.interests-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:48px}
+.interest-photo{position:relative;overflow:hidden;aspect-ratio:3/4}
+.interest-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;filter:none}
+.interest-photo:hover img{transform:scale(1.05);filter:sepia(0%)}
+.interest-photo-label{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(to top,rgba(250,246,240,0.8),transparent);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--white)}
+
+.cta-section{background:var(--dark);padding:120px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'HIRE ME';font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,15vw,200px);color:rgba(61,32,16,0.04);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:10px;pointer-events:none}
+.cta-section h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);letter-spacing:3px;margin-bottom:16px;line-height:1}
+.cta-section h2 span{color:var(--gold)}
+.cta-section p{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto 40px;line-height:1.7}
+.cta-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-link{color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color 0.2s;border-bottom:1px solid var(--border);padding-bottom:2px}
+.cta-link:hover{color:var(--white);border-bottom-color:var(--white)}
+
+footer{background:var(--dark);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border)}
+footer p{font-size:11px;color:var(--muted);letter-spacing:1px}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px}
+.footer-logo span{color:var(--gold)}
+
+.ticker{background:var(--gold);padding:12px 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;animation:ticker 20s linear infinite}
+.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:4px;padding:0 32px;color:var(--black)}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  section{padding:60px 20px}
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .about-grid,.exp-grid,.qmul-grid,.skills-grid{grid-template-columns:1fr}
+  .conf-grid,.fun-grid,.interests-photos{grid-template-columns:repeat(2,1fr)}
+  .certs-grid{grid-template-columns:1fr}
+  .metrics-row{grid-template-columns:repeat(2,1fr)}
+  .data-grid{grid-template-columns:1fr}
+  .hero-stats{left:20px;bottom:24px;gap:24px}
+  .hero-name{font-size:64px}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">MK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#data">Data & CRM</a></li>
+    <li><a href="#brands">Activations</a></li>
+    <li><a href="#conferences">Conferences</a></li>
+    <li><a href="#qmul">QMUL Society</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+  <a href="mailto:koptieva1902@gmail.com" class="nav-cta">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><span style="white-space:nowrap">CRM & Client Analytics</span> · <span style="white-space:nowrap">Luxury Retail</span> · <span style="white-space:nowrap">Inside LVMH Certificate</span></div>
+    <h1 class="hero-name">
+      Mariia<br>
+      <span class="line2">Koptieva</span>
+    </h1>
+    <p class="hero-desc">
+      Final-year <strong>BSc Business Management student at QMUL</strong>, graduating summer 2026 — <strong>available from May 2026.</strong>
+      I turn data into decisions. Three years of hands-on experience in analytics, performance reporting, Excel tracking, client-facing retail, and luxury brand environments. I hold the Inside LVMH Certificate and I understand how luxury retail operates — from the boutique floor to the corporate dashboard. Full right to work in the UK — no sponsorship required now or in the future. <em>Eager to learn, quick to deliver, impossible to bore.</em>
+    </p>
+    <div class="hero-btns">
+      <a href="#about" class="btn-primary">About Me</a>
+      <a href="#data" class="btn-secondary">See My Work</a>
+      <a href="mailto:koptieva1902@gmail.com" class="btn-secondary">Get in touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">3<span>+</span></div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">1<span>st</span></div>
+        <div class="hero-stat-label">Expected Class</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">50<span>+</span></div>
+        <div class="hero-stat-label">Leads tracked/campaign</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="IMG_8399.jpeg" alt="Mariia Koptieva" class="hero-img">
+    <div class="hero-img-overlay"></div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">CRM Analytics</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Performance Dashboards</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Excel & Pivot Tables</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Client Segmentation</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Luxury Retail</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Data-Driven Reporting</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">CRM Analytics</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Performance Dashboards</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Excel & Pivot Tables</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Client Segmentation</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Luxury Retail</span>
+    <span class="ticker-item">·</span>
+    <span class="ticker-item">Data-Driven Reporting</span>
+    <span class="ticker-item">·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about fade-up" id="about">
+  <div class="section-label">About me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">Hi, I'm Mariia.</h2>
+      <p>I'm a final-year <strong>BSc Business Management student at Queen Mary University of London</strong>, based in London. I came here to study, stayed for the opportunity — and haven't stopped moving since.</p>
+      <p>I genuinely love what I do. I've spent the past three years throwing myself into <strong>every experience I could get</strong> — from executing beauty brand activations and building performance trackers for retail campaigns, to in-office analytics and reporting at marketing and consulting internships, to coordinating large-scale conferences and tracking client data end-to-end. I learn fast and I always want more.</p>
+      <p>I want to work at <em>Louis Vuitton</em> because I hold the <em>Inside LVMH Certificate</em> and I genuinely understand how the LVMH ecosystem operates. I am drawn to the intersection of data and luxury retail — using client analytics, segmentation, and CRM insights to help boutique teams build real relationships and drive retention. I know how to turn numbers into stories and stories into action. I'm available from May 2026 and ready to hit the ground running.</p>
+      <p><strong>When I'm not working:</strong> you'll find me on the padel court, at a beauty counter, booking the next flight, or convincing someone to let me pet their dog.</p>
+
+      <div style="margin-top:32px">
+        <div class="section-label" style="margin-bottom:20px">Education</div>
+        <div class="edu-block" style="margin-bottom:20px">
+          <div class="edu-school">Queen Mary University of London</div>
+          <div class="edu-degree">BSc Business Management · Expected 1st Class</div>
+          <div class="edu-grade">2023 – 2026</div>
+          <div class="edu-modules">Strategic Marketing (79%) · Persuasive Strategies in Marketing (85%) · Business Data (74%)<br>QMUL Prize for proactive seminar engagement</div>
+        </div>
+        <div style="margin-top:16px">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Grade feedback · Strategic Marketing</div>
+          <img src="7E71ED15-79B2-47B7-BCC1-3A1BD24E30AF.jpeg" alt="Professor feedback" style="width:100%;max-width:580px;border:1px solid var(--border);opacity:0.9">
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;gap:24px;align-items:flex-start">
+        <div style="width:280px;height:500px;border-radius:28px;overflow:hidden;flex-shrink:0;background:#000">
+          <iframe width="280" height="500" src="https://www.youtube.com/embed/fGwixxzTfEk?playsinline=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display:block;width:100%;height:100%"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA & CRM -->
+<section class="data-section fade-up" id="data">
+  <div class="section-label">Core Strength · Analytics & Reporting</div>
+  <h2 class="section-title">Data &<br>CRM Skills</h2>
+  <p style="font-size:15px;color:var(--muted);max-width:700px;margin-bottom:40px;line-height:1.7">I understand that data is only valuable when it <strong style="color:var(--white)">directly helps people succeed</strong>. Whether it's a post-event performance report, a monthly content analytics deck, or a campaign tracker capturing 50+ leads, I build outputs that are clear, actionable, and built for the person reading them — not just the person writing them.</p>
+
+  <div class="data-grid">
+    <div class="data-card">
+      <h4>Excel & Reporting</h4>
+      <p>Built and maintained <strong>advanced Excel trackers</strong> across event operations, campaign management, and society finances — including pivot tables, VLOOKUP, data cleaning, and reconciliation. Every dataset has a story; I make sure it gets told clearly.</p>
+    </div>
+    <div class="data-card">
+      <h4>Performance Analytics</h4>
+      <p>Tracked and reported on <strong>campaign KPIs, engagement metrics, conversion rates</strong>, and content performance across multiple channels. Produced monthly and ad-hoc reports for senior stakeholders — including the Head of Marketing at Royal Wharf Clinic.</p>
+    </div>
+    <div class="data-card">
+      <h4>Client & Lead Tracking</h4>
+      <p>Captured and segmented <strong>50+ qualified leads per campaign</strong> at brand activations; tracked follow-up engagement and reported on conversion uplift. Experience managing client-facing data with accuracy and discretion.</p>
+    </div>
+    <div class="data-card">
+      <h4>CRM & Systems</h4>
+      <p>Working knowledge of <strong>Salesforce and Power BI</strong>; experienced with Google Workspace, data hygiene, and cross-platform performance reporting. Comfortable picking up new systems quickly — I learn tools fast when there's a clear output to deliver.</p>
+    </div>
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-box">
+      <div class="metric-val">50+</div>
+      <div class="metric-change">per campaign</div>
+      <div class="metric-label">Leads Tracked</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-val">+15%</div>
+      <div class="metric-change">↑ engagement uplift</div>
+      <div class="metric-label">Follow-up Rate</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-val">63K+</div>
+      <div class="metric-change">in a single month</div>
+      <div class="metric-label">Views Tracked</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-val">+211%</div>
+      <div class="metric-change">↑ membership growth</div>
+      <div class="metric-label">Member Retention</div>
+    </div>
+  </div>
+
+  <!-- IBM -->
+  <div style="background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);padding:32px;max-width:800px;margin-top:16px">
+    <div class="section-label" style="margin-bottom:16px">Consulting · 2024</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:12px">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px">IBM Student Consultancy Project</h3>
+      <img src="Image 07-05-2026 at 15.48.jpeg" alt="IBM" style="height:32px;width:auto;opacity:0.6;filter:grayscale(100%) brightness(2);flex-shrink:0">
+    </div>
+    <p style="font-size:14px;color:var(--muted);line-height:1.8">Analysed market trends, consumer behaviour, and competitor strategy for IBM's SkillsBuild platform. Built a data-driven AI-powered marketing strategy and presented findings to IBM mentors — recognised for analytical thinking and commercial insight.</p>
+    <div class="badges-row" style="margin-top:16px">
+      <span class="badge">Market Analysis</span>
+      <span class="badge">Data-Driven Strategy</span>
+      <span class="badge">Consumer Segmentation</span>
+      <span class="badge">Commercial Insight</span>
+      <span class="badge">Competitor Research</span>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER 2 -->
+<div class="ticker" style="background:var(--card)">
+  <div class="ticker-inner">
+    <span class="ticker-item" style="color:var(--gold)">Louis Vuitton</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">LVMH Certificate</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">CRM Analytics</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">Excel & Reporting</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">Luxury Retail</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">Client Segmentation</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">Louis Vuitton</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">LVMH Certificate</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">CRM Analytics</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">Excel & Reporting</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">Luxury Retail</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+    <span class="ticker-item" style="color:var(--gold)">Client Segmentation</span>
+    <span class="ticker-item" style="color:var(--muted)">·</span>
+  </div>
+</div>
+
+<!-- BRAND ACTIVATIONS -->
+<section class="brands-section fade-up" id="brands">
+  <div class="section-label">Experience · Sep 2024 – Present</div>
+  <h2 class="section-title">Brand<br>Activations</h2>
+  <div style="display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:start;margin-bottom:32px">
+    <div>
+      <p style="font-size:15px;color:var(--muted);margin-bottom:24px;line-height:1.7">Working on the ground at beauty brand activations for Rare Beauty, Kayali, Huda Beauty, Charlotte Tilbury, BYOMA, and Laneige has given me a direct understanding of how <strong style="color:var(--white)">luxury and premium retail relationships work in practice</strong>. I have seen how clients engage with products, what drives conversion, and what brings them back. Every activation ends with a tracker. Every number tells a story.</p>
+      <ul style="list-style:none;margin-bottom:0">
+        <li style="font-size:14px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--border);padding-left:20px;position:relative;line-height:1.7"><span style="position:absolute;left:0;color:var(--gold)">→</span>Captured and tracked <strong style="color:var(--white)">50+ qualified client leads per campaign</strong> in Excel — recording engagement, product interest, and follow-up actions to feed post-event performance reporting</li>
+        <li style="font-size:14px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--border);padding-left:20px;position:relative;line-height:1.7"><span style="position:absolute;left:0;color:var(--gold)">→</span>Actively sold products and drove conversion through genuine consultation across skincare, fragrance, and colour cosmetics — building the kind of client-facing instincts that CRM strategies are designed to scale</li>
+        <li style="font-size:14px;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--border);padding-left:20px;position:relative;line-height:1.7"><span style="position:absolute;left:0;color:var(--gold)">→</span>Managed <strong style="color:var(--white)">influencer and content creator arrivals</strong> at pop-up activations — welcoming, briefing and coordinating VIP guests on-site</li>
+        <li style="font-size:14px;color:var(--muted);padding:10px 0;padding-left:20px;position:relative;line-height:1.7"><span style="position:absolute;left:0;color:var(--gold)">→</span>Produced post-event reports analysing conversion rates and engagement targets — contributing to a <strong style="color:var(--white)">+15% rise in follow-up engagement</strong></li>
+      </ul>
+    </div>
+    <div>
+      <img src="IMG_8354.jpeg" alt="Kayali House Party team" style="width:100%;object-fit:cover;border:1px solid var(--border)">
+    </div>
+  </div>
+
+  <div class="brand-chips">
+    <span class="brand-chip highlight">Rare Beauty × Sephora</span>
+    <span class="brand-chip highlight">Kayali by Huda Beauty</span>
+    <span class="brand-chip highlight">Huda Beauty</span>
+    <span class="brand-chip highlight">Charlotte Tilbury</span>
+    <span class="brand-chip highlight">BYOMA</span>
+    <span class="brand-chip highlight">Laneige × Boots</span>
+    <span class="brand-chip highlight">Sunnamusk London</span>
+    <span class="brand-chip">Amazon</span>
+    <span class="brand-chip">Vodafone</span>
+    <span class="brand-chip">Spotify</span>
+    <span class="brand-chip" style="font-style:italic;color:var(--muted)">...and many more</span>
+  </div>
+
+  <div class="brands-masonry">
+    <img src="IMG_8373.jpeg" alt="Kayali giant bag">
+    <img src="IMG_8864.jpeg" alt="Huda Beauty activation">
+    <img src="IMG_8356.jpeg" alt="Sunnamusk London launch">
+    <img src="IMG_8354.jpeg" alt="Kayali team">
+    <img src="IMG_8359.jpeg" alt="Laneige Covent Garden popup">
+    <img src="IMG_8376.jpeg" alt="Laneige team">
+    <img src="IMG_8360.jpeg" alt="Laneige team at stand">
+    <img src="IMG_8355.jpeg" alt="Rare Beauty x Sephora launch">
+    <img src="IMG_8395.jpeg" alt="Rare Beauty x Sephora">
+    <img src="IMG_8394.jpeg" alt="Brand activation">
+    <img src="Image_20-05-2026_at_21_21.jpeg" alt="Women and the World Film Festival">
+    <img src="IMG_8374_2.jpeg" alt="BYOMA activation">
+  </div>
+</section>
+
+<!-- ROYAL WHARF -->
+<section style="background:var(--dark);padding:100px 48px" class="fade-up" id="rwc">
+  <div class="section-label">Experience · Apr–May 2026</div>
+  <div class="exp-grid">
+    <div class="exp-content">
+      <div class="role">Marketing & Content Creation Intern</div>
+      <h2 class="section-title">Royal Wharf<br>Clinic</h2>
+      <div class="period">London · Apr 2026 – May 2026</div>
+      <p>Joined <strong>London's premier hair loss clinic</strong> as a marketing intern, working in-office directly alongside the Head of Marketing. A fast-paced environment that taught me how to <strong>maintain data hygiene, track performance metrics, and turn analytics into actionable recommendations</strong> — all presented to senior stakeholders.</p>
+      <ul class="bullet-list">
+        <li>Maintained <strong>content trackers and performance data in Excel and Google Workspace</strong> — weekly and monthly reporting cycles, data cleaning, metric consolidation</li>
+        <li>Produced a <strong>full campaign analytics report</strong> presented to the Head of Marketing — competitor analysis, performance benchmarks, and strategic recommendations</li>
+        <li>Conducted <strong>cross-platform competitor analysis</strong> to identify market gaps and inform strategy</li>
+        <li>Contributed to content reaching <strong>80.6K TikTok followers and 100M+ organic views</strong></li>
+      </ul>
+      <div class="manager-quote">
+        <p>"Proud of everything you've achieved during your time with us, Mariia. Your work ethic, creativity and willingness to learn have been outstanding from day one."</p>
+        <div class="attribution">Syed Izhaan Habeeb · Head of Marketing, Royal Wharf Clinic</div>
+      </div>
+    </div>
+    <div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+        <img src="IMG_8358.jpeg" alt="Royal Wharf Clinic" style="width:100%;aspect-ratio:3/4;object-fit:cover">
+        <img src="IMG_8353.jpeg" alt="Working at Royal Wharf" style="width:100%;aspect-ratio:3/4;object-fit:cover">
+      </div>
+      <img src="IMG_8352.jpeg" alt="Royal Wharf team" style="width:100%;margin-bottom:16px">
+    </div>
+  </div>
+</section>
+
+<!-- CONFERENCES -->
+<section class="conf-section fade-up" id="conferences">
+  <div class="section-label">Experience · Sep 2024 – Present</div>
+  <h2 class="section-title">Conferences &<br>Events</h2>
+  <div style="margin-bottom:32px;font-size:14px;color:var(--muted);max-width:600px;line-height:1.7">
+    As an <strong style="color:var(--white)">Event Operations Assistant at Love Creative Marketing</strong>, I coordinated end-to-end logistics for 300+ attendee conferences — working in-office on Excel trackers, budget reconciliations, PO management, and forecasting, then on the ground managing teams and VIP delegates.
+  </div>
+
+  <div class="conf-list">
+    <div class="conf-item">
+      <h4>The Economist Impact</h4>
+      <p>Business Innovation Summit · Antitrust Summit · Sustainability Week · Net-Zero Shipping Summit</p>
+    </div>
+    <div class="conf-item">
+      <h4>ADCon 2025</h4>
+      <p>Europe's leading advertising conference. Front-of-house & delegate coordination.</p>
+    </div>
+    <div class="conf-item">
+      <h4>Optimove Connect</h4>
+      <p>CRM & marketing intelligence summit — directly relevant to client engagement strategy.</p>
+    </div>
+    <div class="conf-item">
+      <h4>HR Analytics Summit & Learning Technologies</h4>
+      <p>Data-led conferences covering workforce analytics and learning technology.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px">
+    <div style="background:var(--card);border:1px solid var(--border);padding:20px;text-align:center;border-top:2px solid var(--gold)">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--gold)">300+</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Attendees per event</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);padding:20px;text-align:center;border-top:2px solid var(--gold)">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--gold)">5</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Team members led</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);padding:20px;text-align:center;border-top:2px solid var(--gold)">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--gold)">C-Suite</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">VIP delegate handling</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);padding:20px;text-align:center;border-top:2px solid var(--gold)">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--gold)">10+</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">Events delivered</div>
+    </div>
+  </div>
+</section>
+
+<!-- QMUL SOCIETY -->
+<section class="qmul-section fade-up" id="qmul">
+  <div class="section-label">Leadership · Jan 2025 – Present</div>
+  <div class="qmul-grid">
+    <div>
+      <div class="exp-content">
+        <div class="role">Social Media & Marketing Manager · Treasurer</div>
+        <h2 class="section-title">QMUL<br>Society</h2>
+        <div class="period">Ukrainian Society · Jan 2025 – Present</div>
+        <p>Running the social media and finances for a university society sounds small — until you look at the numbers. I built a <strong>full performance reporting system</strong> from scratch, tracking growth trends, engagement metrics, and KPIs month on month. Then I presented it.</p>
+        <ul class="bullet-list">
+          <li>Built and maintained a <strong>monthly analytics reporting system</strong> tracking follower growth, engagement rates, reach, impressions, and content performance — presented to the committee each month</li>
+          <li>Grew Instagram from <strong>500 to 1,004 followers (+100%)</strong> and paid membership from 18 to 56 (+211%)</li>
+          <li>Hit <strong>63,027 views in a single month</strong> with accounts reached up +191.9%</li>
+          <li>As <strong>Treasurer</strong>, managed all society finances and Excel budget tracking; raised £2,500+</li>
+          <li>Coordinated a Careers Forum (Goldman Sachs, Estée Lauder, Mayer Brown — 80+ attendees) and a Diplomatic Talk — full logistics, budgets, stakeholder management</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="analytics-card">
+        <h4>Monthly Performance · Peak Month</h4>
+        <div class="analytics-grid">
+          <div class="analytics-metric"><div class="val">63,027</div><div class="change">+191.9% accounts reached</div><div class="label">Monthly Views</div></div>
+          <div class="analytics-metric"><div class="val">1,004</div><div class="change">+100% growth</div><div class="label">Followers</div></div>
+          <div class="analytics-metric"><div class="val">56</div><div class="change">+211% growth</div><div class="label">Paid Members</div></div>
+          <div class="analytics-metric"><div class="val">51%</div><div class="label">Non-follower Views</div></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:16px">
+        <img src="IMG_8329.jpeg" alt="Analytics" style="width:100%;border:1px solid var(--border)">
+        <img src="IMG_8330.jpeg" alt="Analytics" style="width:100%;border:1px solid var(--border)">
+        <img src="IMG_8331.jpeg" alt="Analytics" style="width:100%;border:1px solid var(--border)">
+      </div>
+      <div class="treasurer-note">
+        <p><strong>Treasurer:</strong> Managed finances, budgets, and Excel reporting. Raised £2,500+ across charity fundraisers and events. Attracted university development fund investment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section fade-up" id="skills">
+  <div class="section-label">Skills & Qualifications</div>
+  <h2 class="section-title">What I bring<br>to the table.</h2>
+
+  <div class="skills-grid">
+    <div>
+      <div class="skill-category">
+        <h4>Data & CRM Tools</h4>
+        <div class="skill-tags">
+          <span class="skill-tag primary">Advanced Excel & Pivot Tables</span>
+          <span class="skill-tag primary">VLOOKUP & Data Cleaning</span>
+          <span class="skill-tag primary">Performance Dashboards</span>
+          <span class="skill-tag primary">Salesforce</span>
+          <span class="skill-tag primary">Power BI</span>
+          <span class="skill-tag primary">Campaign Tracking</span>
+          <span class="skill-tag">Google Workspace</span>
+          <span class="skill-tag">AI Tools</span>
+          <span class="skill-tag">Data Visualisation</span>
+        </div>
+      </div>
+      <div class="skill-category" style="margin-top:24px">
+        <h4>Analytics & Reporting</h4>
+        <div class="skill-tags">
+          <span class="skill-tag primary">Client Segmentation</span>
+          <span class="skill-tag primary">KPI Tracking</span>
+          <span class="skill-tag primary">Engagement Analytics</span>
+          <span class="skill-tag primary">Competitor Analysis</span>
+          <span class="skill-tag">SEO Analytics</span>
+          <span class="skill-tag">Budget Tracking</span>
+          <span class="skill-tag">Post-Event Reporting</span>
+          <span class="skill-tag">Stakeholder Presentations</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-category">
+        <h4>Luxury Retail & Client-Facing</h4>
+        <div class="skill-tags">
+          <span class="skill-tag primary">Luxury Brand Understanding</span>
+          <span class="skill-tag primary">Client Relationship Management</span>
+          <span class="skill-tag primary">Retail Floor Experience</span>
+          <span class="skill-tag primary">VIP & Influencer Handling</span>
+          <span class="skill-tag">Brand Activations</span>
+          <span class="skill-tag">Cross-functional Collaboration</span>
+          <span class="skill-tag">Stakeholder Management</span>
+        </div>
+      </div>
+      <div class="skill-category" style="margin-top:24px">
+        <h4>Soft Skills</h4>
+        <div class="skill-tags">
+          <span class="skill-tag primary">Highly Organised</span>
+          <span class="skill-tag primary">Strong Attention to Detail</span>
+          <span class="skill-tag primary">Analytical Thinking</span>
+          <span class="skill-tag primary">Strong Communicator</span>
+          <span class="skill-tag">Proactive & Reactive</span>
+          <span class="skill-tag">Team Working</span>
+          <span class="skill-tag">Adaptability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px">
+    <div class="langs-row">
+      <div class="lang-item native"><div class="lang-name">Ukrainian</div><div class="lang-level">Native</div></div>
+      <div class="lang-item native"><div class="lang-name">Russian</div><div class="lang-level">Native</div></div>
+      <div class="lang-item"><div class="lang-name">English</div><div class="lang-level">Fluent</div></div>
+      <div class="lang-item"><div class="lang-name">German</div><div class="lang-level">Beginner</div></div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:64px;margin-bottom:24px">Certifications</div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-issuer">LVMH</div>
+      <div class="cert-name">Inside LVMH Certificate</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Creation & Branding · Operations & Supply Chain</div>
+      <div class="cert-date">December 2025</div>
+      <img src="Image 06-05-2026 at 23.28.jpeg" alt="LVMH Certificate" class="cert-img">
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">Coursera · UC Davis</div>
+      <div class="cert-name">The Strategy of Content Marketing</div>
+      <div class="cert-date">June 2024</div>
+      <img src="Image 06-05-2026 at 23.29.jpeg" alt="Coursera Certificate" class="cert-img">
+    </div>
+    <div class="cert-card">
+      <div class="cert-issuer">Google · Coursera</div>
+      <div class="cert-name">Foundations of Digital Marketing & E-commerce</div>
+      <div class="cert-date">July 2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONALITY -->
+<section class="fun-section fade-up" id="interests">
+  <div class="section-label">Beyond the job</div>
+  <h2 class="section-title">The person<br>behind the CV.</h2>
+  <div class="interests-photos" style="margin-bottom:48px">
+    <div class="interest-photo"><img src="IMG_5383.jpeg" alt="Paris, Louvre"></div>
+    <div class="interest-photo"><img src="IMG_8408.jpeg" alt="Hollywood"></div>
+    <div class="interest-photo"><img src="IMG_8412.jpeg" alt="Greece"></div>
+    <div class="interest-photo"><img src="IMG_8410.jpeg" alt="Hollywood sign"></div>
+  </div>
+  <div class="fun-grid">
+    <div class="fun-card">
+      <img src="IMG_8414.jpeg" alt="Bungee jumping">
+      <div class="fun-card-body">
+        <div class="fun-card-title">Yes, I bungee jumped.</div>
+        <div class="fun-card-desc">If you need someone to jump into something new without hesitation — I've literally done it from a crane.</div>
+      </div>
+    </div>
+    <div class="fun-card">
+      <img src="IMG_8409.jpeg" alt="Padel">
+      <div class="fun-card-body">
+        <div class="fun-card-title">Padel & Pilates</div>
+        <div class="fun-card-desc">Competitive on the court. Grounded in the studio. Balance is everything.</div>
+      </div>
+    </div>
+    <div class="fun-card">
+      <img src="IMG_8413.jpeg" alt="Dog">
+      <div class="fun-card-body">
+        <div class="fun-card-title">Dog Person</div>
+        <div class="fun-card-desc">Unconditional love, zero corporate politics. Dogs just get it.</div>
+      </div>
+    </div>
+    <div class="fun-card">
+      <img src="IMG_8178.jpeg" alt="Reading">
+      <div class="fun-card-body">
+        <div class="fun-card-title">Always Reading</div>
+        <div class="fun-card-desc">Parks, coffee shops, long flights. There's always a book on the go.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section fade-up">
+  <div class="section-label" style="justify-content:center;margin-bottom:24px">Let's connect</div>
+  <h2>Let's <span>talk.</span></h2>
+  <p>I'm a final-year Business Management student graduating summer 2026, available from May. I've built real experience in data, analytics, and luxury retail — and I'm genuinely excited about what comes next at Louis Vuitton.</p>
+  <a href="mailto:koptieva1902@gmail.com" class="btn-primary" style="display:inline-block;margin-bottom:32px">koptieva1902@gmail.com</a>
+  <div class="cta-links">
+    <a href="https://linkedin.com/in/mariiakoptieva" class="cta-link" target="_blank">LinkedIn</a>
+    <a href="tel:+447887300648" class="cta-link">+44 788 730 0648</a>
+    <a href="https://mariiakoptieva.github.io/louisvuitton" class="cta-link">Portfolio</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="font-size:11px;color:var(--muted)">© 2026 Mariia Koptieva · mariiakoptieva.github.io/louisvuitton</p>
+  <div class="footer-logo">MK<span>.</span></div>
+  <p style="font-size:11px;color:var(--muted)">London, UK · Open to work</p>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }, 80);
+});
+document.querySelectorAll('a,button,.fun-card,.conf-photo').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.width = '20px'; cursor.style.height = '20px'; });
+  el.addEventListener('mouseleave', () => { cursor.style.width = '12px'; cursor.style.height = '12px'; });
+});
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
